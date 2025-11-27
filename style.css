@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "NYX GOTHIC";
+    src: url("NYX GOTHIC.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+h5 {
+    font-family: "NYX GOTHIC", sans-serif;
+    font-size: 50px;
+}
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.software-grid {
+    display: flex;
+    flex-direction: row;   /* Iconos en horizontal */
+    justify-content:left; 
+    align-items: center;
+    gap: 40px;             /* Separación entre iconos */
+    margin-top: 20px;
+}
+
+.software-grid figure {
+    text-align: center;
+}
