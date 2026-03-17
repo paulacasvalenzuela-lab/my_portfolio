@@ -1,4 +1,10 @@
-/* ---------------- RESET ---------------- */
+/* ---------------- FONTS ---------------- */
+@font-face {
+    font-family: 'NyxGothic';
+    src: url(fonts/NYXGOTHIC/OpenType-PS/NYX\ GOTHIC.otf) format('opentype');
+}
+
+/* ---------------- RESET & BASE ---------------- */
 * {
     margin: 0;
     padding: 0;
@@ -7,13 +13,11 @@
 
 html, body {
     width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-img, video {
-    max-width: 100%;
-    display: block;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    font-family: monospace;
+    color: var(--negro);
+    background: white;
+    padding-top: 60px; /* espacio para header fijo */
 }
 
 /* ---------------- VARIABLES ---------------- */
@@ -21,16 +25,10 @@ img, video {
     --rosa: #e6b6c1;
     --negro: #111;
     --gris: #f2f2f2;
-    --espacio-s: 1rem;
-    --espacio-m: 2rem;
-    --espacio-l: 4rem;
-}
 
-/* ---------------- BASE ---------------- */
-body {
-    font-family: monospace;
-    color: var(--negro);
-    background: white;
+    /* Margen lateral uniforme para hero y secciones */
+    --margen-lateral: 10%; 
+    --espacio-seccion: 5rem;
 }
 
 /* ---------------- HEADER ---------------- */
@@ -44,7 +42,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 var(--margen-lateral);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
 }
@@ -57,59 +55,54 @@ body {
 .nav ul {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
     gap: 2rem;
 }
 
 .nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--negro);
     font-weight: 500;
-    transition: color 0.2s;
+    transition: 0.2s;
 }
 
 .nav a:hover {
-    color: #0077cc;
-}
-
-body {
-    padding-top: 60px; /* espacio para el header fijo */
+    color: var(--rosa);
 }
 
 /* ---------------- HERO ---------------- */
 .hero {
     background: var(--rosa);
-    width: 100vw;           /* ancho completo de ventana */
-    min-height: 50vh;
+    width: 100%;
+    padding: var(--espacio-seccion) var(--margen-lateral);
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -60px; /* Hero justo debajo del header */
 }
 
 .hero-content {
-    max-width: 1200px;      /* ancho máximo para el contenido */
-    padding: 2rem;
-    text-align: left;
+    max-width: 1200px;
+    margin: 0; /* Alineado al margen lateral */
 }
 
 .hero h2 {
-    font-size: 5rem;        /* grande, pero menor que H1 */
+    font-size: 5rem;
     line-height: 1.1;
-}
-
-.hero p {
-    margin-top: 1rem;
-    font-size: 1.2rem;
 }
 
 .hero h2::after {
     content: "";
     display: block;
-    width: 80px;
+    width: 150px;
     height: 4px;
     background: var(--negro);
     margin-top: 15px;
+}
+
+.hero p {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    max-width: 800px;
 }
 
 .hero-links {
@@ -124,27 +117,35 @@ body {
 }
 
 .hero-links a:hover {
-    color: #0077cc;
+    color: var(--gris);
 }
 
-/* ---------------- WORK GRID ---------------- */
-.work {
-    padding: 4rem 2rem;
+/* ---------------- SECCIONES DE CONTENIDO ---------------- */
+.work, .proyecto-detalle {
+    padding: var(--espacio-seccion) var(--margen-lateral);
     background: var(--gris);
 }
 
-.work-title {
+.bg-white {
+    background: white !important;
+}
+
+.work-title, .proyecto-titulo {
     font-size: 4rem;
     margin-bottom: 1rem;
+    line-height: 1.1;
 }
 
-.work-subtitle {
+.work-subtitle, .proyecto-texto {
     margin-bottom: 3rem;
+    font-size: 1.1rem;
+    max-width: 700px;
 }
 
+/* ---------------- GRIDS Y CARRUSELES ---------------- */
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
@@ -162,20 +163,63 @@ body {
     transform: translateY(-5px);
 }
 
-/* ---------------- PROYECTOS ---------------- */
-.proyecto-titulo {
+/* ---------------- CARRUSEL ---------------- */
+.carrusel {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+   margin-bottom: 3rem; 
+    /* Hacer que ocupe todo el ancho de la ventana */
+    width: calc(100% + (var(--margen-lateral) * 2));
+    margin-left: calc(var(--margen-lateral) * -1);
+    scroll-snap-type: x mandatory;
+}
+
+.carrusel img {
+    height: 400px;        /* altura estándar de branding/campañas */
+    width: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    scroll-snap-align: start;
+}
+
+/* Carrusel más grande para Cartelería */
+.carrusel-grande {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+
+    width: calc(100% + (var(--margen-lateral) * 2));
+    margin-left: calc(var(--margen-lateral) * -1);
+    scroll-snap-type: x mandatory;
+}
+
+.carrusel-grande img {
+    height: 600px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    scroll-snap-align: start;
+}
+
+.card .carrusel img{
+    width:200px;
+    height:auto;
+}
+
+/* ---------------- TIPOGRAFÍA ---------------- */
+h5{
+    font-family:'NyxGothic';
     font-size: 4rem;
-    margin-bottom: 1rem;
-    line-height: 1.1;
 }
 
-.proyecto-texto {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.proyecto-imagen {
-    margin-bottom: 1rem;
+.especimen-doble {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 /* ---------------- FOOTER ---------------- */
@@ -183,7 +227,7 @@ body {
     background: black;
     color: white;
     text-align: center;
-    padding: 3rem;
+    padding: 4rem var(--margen-lateral);
 }
 
 .footer a {
@@ -195,23 +239,26 @@ body {
 }
 
 /* ---------------- RESPONSIVE ---------------- */
-@media(max-width:1024px){
-    .work-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media(max-width:1024px) {
+    :root { --margen-lateral: 5%; }
+    .hero h2, .work-title, .proyecto-titulo { font-size: 3.5rem; }
+    .work-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media(max-width:768px) {
-    .hero h2 {
-        font-size: 3rem;
-    }
-    .nav ul {
-        gap: 1rem;
-    }
-    .header {
-        padding: 0 1rem;
-    }
-    .work-grid {
-        grid-template-columns: 1fr;
-    }
+    :root { --margen-lateral: 20px; }
+    .hero h2, .work-title, .proyecto-titulo { font-size: 2.5rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .carrusel img { height: 250px; }
+}
+
+/* ---------------- VIDEO MOTIONGRAPHIC ---------------- */
+.video-container{
+    text-align:center;
+    margin-top:2rem;
+}
+
+.video-container video{
+    max-width:600px;
+    width:100%;
 }
