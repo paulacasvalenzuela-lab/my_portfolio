@@ -11,21 +11,27 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     width: 100%;
-    overflow-x: hidden; /* Evita scroll horizontal */
+    overflow-x: hidden;
+    /* Evita scroll horizontal */
     font-family: monospace;
     color: var(--negro);
     background: white;
-    padding-top: 60px; /* espacio para header fijo */
+    padding-top: var(--header-height, 60px);
+    /* espacio para header fijo */
 }
 
 /* ---------------- IMÁGENES Y MEDIOS RESPONSIVOS ---------------- */
-img, picture, video {
+img,
+picture,
+video {
     max-width: 100%;
     height: auto;
     display: block;
 }
+
 /* ---------------- VARIABLES ---------------- */
 :root {
     --rosa: #e6b6c1;
@@ -33,8 +39,9 @@ img, picture, video {
     --gris: #f2f2f2;
 
     /* Margen lateral uniforme para hero y secciones */
-    --margen-lateral: 10%; 
+    --margen-lateral: 10%;
     --espacio-seccion: 5rem;
+    --header-height: 60px;
 }
 
 /* ---------------- HEADER ---------------- */
@@ -49,7 +56,7 @@ img, picture, video {
     justify-content: space-between;
     align-items: center;
     padding: 0 var(--margen-lateral);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
@@ -83,12 +90,14 @@ img, picture, video {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: -60px; /* Hero justo debajo del header */
+    margin-top: -60px;
+    /* Hero justo debajo del header */
 }
 
 .hero-content {
     max-width: 1200px;
-    margin: 0; /* Alineado al margen lateral */
+    margin: 0;
+    /* Alineado al margen lateral */
 }
 
 .hero h2 {
@@ -127,7 +136,8 @@ img, picture, video {
 }
 
 /* ---------------- SECCIONES DE CONTENIDO ---------------- */
-.work, .proyecto-detalle {
+.work,
+.proyecto-detalle {
     padding: var(--espacio-seccion) var(--margen-lateral);
     background: var(--gris);
 }
@@ -136,13 +146,15 @@ img, picture, video {
     background: white !important;
 }
 
-.work-title, .proyecto-titulo {
+.work-title,
+.proyecto-titulo {
     font-size: 4rem;
     margin-bottom: 1rem;
     line-height: 1.1;
 }
 
-.work-subtitle, .proyecto-texto {
+.work-subtitle,
+.proyecto-texto {
     margin-bottom: 3rem;
     font-size: 1.1rem;
     max-width: 700px;
@@ -168,54 +180,71 @@ img, picture, video {
     background: var(--rosa);
     transform: translateY(-5px);
 }
-.contact-card, .card, .card-about {
+
+.contact-card,
+.card,
+.card-about {
     background: white;
-    padding: 2.5rem; /* igual para todas las tarjetas */
-    max-width: 700px; /* anchura compartida */
+    padding: 2.5rem;
+    /* igual para todas las tarjetas */
+    max-width: 700px;
+    /* anchura compartida */
     width: 100%;
     margin: 2.5rem auto;
     border: 1px solid #ddd;
     text-decoration: none;
     color: black;
     transition: 0.3s;
-    border-radius: 0; /* esquinas cuadradas */
+    border-radius: 0;
+    /* esquinas cuadradas */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Tipografía y colores iguales para las tarjetas */
-.contact-card h2, .card h2, .card-about h2 {
+.contact-card h2,
+.card h2,
+.card-about h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     text-align: center;
 }
 
-.contact-card h3, .card h3, .card-about h3 {
+.contact-card h3,
+.card h3,
+.card-about h3 {
     font-size: 1.8rem;
     margin: 1.5rem 0 0.5rem;
     color: #e91e63;
 }
 
-.contact-card p, .card p, .card-about p {
+.contact-card p,
+.card p,
+.card-about p {
     font-size: 1.2rem;
     line-height: 1.8;
 }
 
-.contact-card a, .card a, .card-about a {
+.contact-card a,
+.card a,
+.card-about a {
     color: #e91e63;
     text-decoration: none;
     font-weight: bold;
 }
 
-.contact-card a:hover, .card a:hover, .card-about a:hover {
+.contact-card a:hover,
+.card a:hover,
+.card-about a:hover {
     text-decoration: underline;
 }
+
 /* ---------------- CARRUSEL ---------------- */
 .carrusel {
     display: flex;
     overflow-x: auto;
     gap: 1.5rem;
     padding-bottom: 2rem;
-   margin-bottom: 3rem; 
+    margin-bottom: 3rem;
     /* Hacer que ocupe todo el ancho de la ventana */
     width: calc(100% + (var(--margen-lateral) * 2));
     margin-left: calc(var(--margen-lateral) * -1);
@@ -223,7 +252,8 @@ img, picture, video {
 }
 
 .carrusel img {
-    height: 400px;        /* altura estándar de branding/campañas */
+    height: 400px;
+    /* altura estándar de branding/campañas */
     width: auto;
     object-fit: cover;
     border-radius: 4px;
@@ -250,14 +280,14 @@ img, picture, video {
     scroll-snap-align: start;
 }
 
-.card .carrusel img{
-    width:200px;
-    height:auto;
+.card .carrusel img {
+    width: 200px;
+    height: auto;
 }
 
 /* ---------------- TIPOGRAFÍA ---------------- */
-h5{
-    font-family:'NyxGothic';
+h5 {
+    font-family: 'NyxGothic';
     font-size: 4rem;
 }
 
@@ -285,26 +315,153 @@ h5{
 }
 
 /* ---------------- RESPONSIVE ---------------- */
-@media(max-width:1024px) {
-    :root { --margen-lateral: 5%; }
-    .hero h2, .work-title, .proyecto-titulo { font-size: 3.5rem; }
-    .work-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 1024px) {
+    :root {
+        --margen-lateral: 5%;
+    }
+
+    .hero h2,
+    .work-title,
+    .proyecto-titulo {
+        font-size: 3.5rem;
+    }
+
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Ajustes para tablets: reducir espacios y carrusel */
+    .hero {
+        padding: calc(var(--espacio-seccion) / 1.5) var(--margen-lateral);
+    }
+
+    .carrusel img {
+        max-height: 45vh;
+    }
+
+    .footer {
+        padding: 3rem var(--margen-lateral);
+    }
 }
 
-@media(max-width:768px) {
-    :root { --margen-lateral: 20px; }
-    .hero h2, .work-title, .proyecto-titulo { font-size: 2.5rem; }
-    .work-grid { grid-template-columns: 1fr; }
-    .carrusel img { height: 250px; }
+@media (max-width: 768px) {
+    :root {
+        --margen-lateral: 20px;
+    }
+
+    /* Header más flexible en móviles: altura automática para permitir envoltura del nav */
+    .header {
+        position: static;
+        /* dejar header en el flujo para evitar padding-top extra */
+        height: auto;
+        padding: 0.75rem var(--margen-lateral);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* El header es estático en móviles, no necesitamos padding-top en el body */
+    html,
+    body {
+        padding-top: 0;
+    }
+
+    .nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .hero h2,
+    .work-title,
+    .proyecto-titulo {
+        font-size: 2.5rem;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carrusel img {
+        max-height: 40vh;
+    }
+
+    .hero {
+        padding: 3rem var(--margen-lateral);
+        margin-top: 0;
+    }
+
+    .footer {
+        padding: 2.5rem var(--margen-lateral);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --margen-lateral: 16px;
+    }
+
+    html,
+    body {
+        padding-top: 0;
+    }
+
+    .header {
+        position: static;
+        padding: 0.6rem var(--margen-lateral);
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .nav ul {
+        gap: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        padding: 2.5rem var(--margen-lateral);
+        margin-top: 0;
+    }
+
+    .hero h2 {
+        font-size: clamp(1.6rem, 8vw, 2.2rem);
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .carrusel img {
+        max-height: 35vh;
+    }
+
+    .contact-card,
+    .card,
+    .card-about {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .footer {
+        padding: 2rem var(--margen-lateral);
+    }
 }
 
 /* ---------------- VIDEO MOTIONGRAPHIC ---------------- */
-.video-container{
-    text-align:center;
-    margin-top:2rem;
+.video-container {
+    text-align: center;
+    margin-top: 2rem;
 }
 
-.video-container video{
-    max-width:600px;
-    width:100%;
+.video-container video {
+    max-width: 600px;
+    width: 100%;
 }
