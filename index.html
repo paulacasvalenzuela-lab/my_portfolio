@@ -26,27 +26,20 @@
     <main>
 
         <!-- HERO -->
-
         <section class="hero">
-
             <div class="hero-content">
-
                 <h2>
                     Strategic <br>
                     creative.
                 </h2>
-
                 <p>
                     "La creatividad es inteligencia divirtiéndose." – Albert Einstein
                 </p>
-
             </div>
-
         </section>
 
 
         <!-- WORK -->
-
         <section class="work">
 
             <h2 class="proyecto-titulo">
@@ -57,30 +50,90 @@
                 El diseño habla por sí solo.
             </p>
 
+            <!-- BOTONES DE FILTRO -->
+            <div class="filtros" >
+                <button class="filtro-btn activo" data-filtro="todos" type="button">Todos</button>
+                <button class="filtro-btn" data-filtro="branding" type="button">Branding</button>
+                <button class="filtro-btn" data-filtro="campanas" type="button">Campañas</button>
+                <button class="filtro-btn" data-filtro="carteleria" type="button">Cartelería</button>
+                <button class="filtro-btn" data-filtro="tipografia" type="button">Tipografía</button>
+                <button class="filtro-btn" data-filtro="fotografia" type="button">Fotografía</button>
+                <button class="filtro-btn" data-filtro="motiongraphic" type="button">Motion Graphic</button>
+            </div>
+
+            <!-- GRID DE PROYECTOS -->
             <div class="work-grid">
 
-                <a href="branding.html" class="work-card">
-                    <h3>Branding</h3>
+                <!-- BRANDING -->
+                <a href="branding.html#versia" class="work-card" data-categoria="branding">
+                    <div class="work-card-cat">Branding</div>
+                    <h3>Versia</h3>
+                    <p>Sistema de identidad visual completo: papelería, carteles, mupi y merchandising.</p>
                 </a>
 
-                <a href="campanas.html" class="work-card">
-                    <h3>Campañas</h3>
+                <a href="branding.html#alzali" class="work-card" data-categoria="branding">
+                    <div class="work-card-cat">Branding</div>
+                    <h3>Alzali</h3>
+                    <p>Identidad de marca con packaging, flyer y posts para redes sociales.</p>
                 </a>
 
-                <a href="carteleria.html" class="work-card">
+                <!-- CAMPAÑAS -->
+                <a href="campanas.html#tu-ayuda-su-conexion" class="work-card" data-categoria="campanas">
+                    <div class="work-card-cat">Campañas</div>
+                    <h3>Tu Ayuda, Su Conexión</h3>
+                    <p>Campaña social con valla publicitaria, lona, banner y piezas digitales.</p>
+                </a>
+
+                <a href="campanas.html#rompemos-el-cristal" class="work-card" data-categoria="campanas">
+                    <div class="work-card-cat">Campañas</div>
+                    <h3>Rompemos el cristal</h3>
+                    <p>Campaña de concienciación con mupi, banner, history y posts coordinados.</p>
+                </a>
+
+                <a href="campanas.html#prevencion-tsunami" class="work-card" data-categoria="campanas">
+                    <div class="work-card-cat">Campañas</div>
+                    <h3>Prevención de Tsunami</h3>
+                    <p>Campaña de emergencias con infografía, flyer, mupi y banner.</p>
+                </a>
+
+                <a href="campanas.html#pienso-luego-diseno" class="work-card" data-categoria="campanas">
+                    <div class="work-card-cat">Campañas</div>
+                    <h3>Pienso, luego diseño</h3>
+                    <p>Serie de tres posts con concepto editorial sobre el proceso creativo.</p>
+                </a>
+
+                <!-- CARTELERÍA -->
+                <a href="carteleria.html" class="work-card" data-categoria="carteleria">
+                    <div class="work-card-cat">Cartelería</div>
                     <h3>Cartelería</h3>
+                    <p>Carteles de concierto de rock, El Mago de Oz, Cruzcampo y prevención de tsunamis.</p>
                 </a>
 
-                <a href="tipografia.html" class="work-card">
-                    <h3>Tipografía</h3>
+                <!-- TIPOGRAFÍA -->
+                <a href="tipografia.html#nyx-gothic" class="work-card" data-categoria="tipografia">
+                    <div class="work-card-cat">Tipografía</div>
+                    <h3>NYX GOTHIC</h3>
+                    <p>Fuente diseñada desde cero, geométrica y minimalista. Gótica para la era digital.</p>
                 </a>
 
-                <a href="fotografia.html" class="work-card">
-                    <h3>Fotografía</h3>
+                <!-- FOTOGRAFÍA -->
+                <a href="fotografia.html#bodegon" class="work-card" data-categoria="fotografia">
+                    <div class="work-card-cat">Fotografía</div>
+                    <h3>Aire de Sevilla</h3>
+                    <p>Fotografía de bodegón para la marca Aire de Sevilla.</p>
                 </a>
 
-                <a href="motiongraphic.html" class="work-card">
-                    <h3>Motion Graphic</h3>
+                <a href="fotografia.html#catalogo" class="work-card" data-categoria="fotografia">
+                    <div class="work-card-cat">Fotografía</div>
+                    <h3>Fotografía de Catálogo</h3>
+                    <p>Sesión de producto para catálogo comercial con fondo controlado y luz de estudio.</p>
+                </a>
+
+                <!-- MOTION GRAPHIC -->
+                <a href="motiongraphic.html#delusional" class="work-card" data-categoria="motiongraphic">
+                    <div class="work-card-cat">Motion Graphic</div>
+                    <h3>DELUSIONAL</h3>
+                    <p>Videoclip tipográfico con animación de texto, ritmo visual y narrativa dinámica.</p>
                 </a>
 
             </div>
@@ -91,16 +144,15 @@
 
 
     <footer class="footer">
-
         <p>© 2025 Paula – Portfolio</p>
-
         <p>
             <a href="mailto:paulacas.valenzuela@gmail.com">Email</a> |
             <a href="https://www.behance.net/castrovalenzuela">Behance</a> |
             <a href="https://www.instagram.com/valenzuela_visuals">Instagram</a>
         </p>
-
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 

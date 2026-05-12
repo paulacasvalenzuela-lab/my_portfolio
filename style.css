@@ -3,28 +3,21 @@
 /* TIPOGRAFIA PERSONALIZADA*/
 @font-face {
     font-family: 'NyxGothic';
-    /* Define el nombre que usaremos para referirnos a esta fuente en el CSS. */
     src: url(fonts/NYXGOTHIC/OpenType-PS/NYX\ GOTHIC.otf) format('opentype');
-    /* Le dice al navegador dónde está el archivo (la ruta) y qué formato tiene */
 }
 
 /* ESTILOS PROPIOS DE LA WEB, ADIOS A LOS QUE ESTÁN POR DEFECTO*/
 * {
     margin: 0;
-    /* Quita los márgenes externos */
     padding: 0;
-    /* Quita los rellenos internos */
     box-sizing: border-box;
-    /* Hace que padding y border no rompan el layout*/
 }
 
-/* Aquí definimos VARIABLES CSS personalizadas. Se pueden usar en cualquier parte del documento con 'var(--nombre-variable)'. Sirven para facilitar cambios globales */
 :root {
     --rosa: #e6b6c1;
     --negro: #111;
     --gris: #f2f2f2;
 
-    /* Margen lateral */
     --margen-lateral: 10%;
     --espacio-seccion: 5rem;
     --header-height: 3.75rem;
@@ -39,236 +32,222 @@
 html,
 body {
     width: 100%;
-    /* Ocupan todo el ancho de la ventana del navegador */
     overflow-x: hidden;
-    /* Evita que aparezca scroll horizontal */
     font-family: monospace;
-    /* Define la tipografía por defecto como 'monospace' (de máquina de escribir) */
     color: var(--negro);
-    /* Aplica el color definido en la variable '--negro' al texto */
     background: white;
-    /* Fondo blanco para el documento */
     padding-top: var(--header-height, 3.75rem);
-    /* Compensa el header fijo para que no tape contenido */
 }
 
-/*CONTENEDORES DE IMAGENES ...*/
 img,
 picture,
 video {
     max-width: 100%;
-    /* Su ancho máximo será el 100% del ancho de su contenedor padre */
     height: auto;
-    /* Su altura se ajusta automáticamente para mantener la proporción */
     display: block;
-    /* Hace que estos elementos se comporten como bloques facilitando el control de márgenes y la eliminación de espacios no deseados debajo de ellos */
 }
 
 
 /*DISEÑITO DEL HEADER*/
 .header {
     position: fixed;
-    /* Fija el elemento en la ventana del navegador, no se mueve al hacer scroll */
     top: 0;
-    /* Lo pega al borde superior de la ventana */
     left: 0;
-    /* Lo pega al borde izquierdo */
     width: 100%;
-    /* Ocupa todo el ancho de la ventana */
     height: var(--header-height, 3.75rem);
-    /* Altura fija de 60 píxeles */
     background-color: white;
-    /* Fondo blanco */
     display: flex;
-    /* Activa el modo Flexbox, que facilita la distribución de sus hijos */
     justify-content: space-between;
-    /* Distribuye los hijos (el logo y el nav) de forma que el primero se vaya a la izquierda y el último a la derecha, dejando espacio entre ellos */
     align-items: center;
-    /* Centra verticalmente los hijos dentro del header */
     padding: 0 var(--margen-lateral);
-    /* Padding lateral usando la variable que habia definido antes en el root */
     box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
-    /* Buscado: Añade una sombra sutil debajo del header para darle profundidad, que se note el corte */
     z-index: 1000;
-    /* Buscado: Controla la superposición. Un valor alto asegura que el header esté siempre por encima de otros elementos */
 }
 
-/* CREACION DEL LOGO QUE NO ES LOGO */
 .logo {
     font-size: 1.5rem;
-    /* Tamaño de fuente */
     font-weight: bold;
-    /* Texto en negrita */
 }
 
-/* DISEÑO DEL MENÚ DEL HEADER */
 .nav ul {
     list-style: none;
-    /* Buscado:  Quita los puntos/víñetas de la lista */
     display: flex;
-    /* Coloca los elementos de la lista (<li>) en una fila horizontal */
     gap: 2rem;
-    /* Espacio entre los elementos de la lista */
 }
 
 .nav a {
     text-decoration: none;
-    /* Buscado: Quita el subrayado por defecto de los enlaces */
     color: var(--negro);
-    /* Color del texto del enlace (negro) */
     font-weight: 500;
-    /* Grosor de la fuente */
     transition: 0.2s;
-    /* Buscado: Suaviza cualquier cambio de estilo (como el del hover) durante 0.2 segundos */
 }
 
 .nav a:hover {
     color: var(--rosa);
-    /* Cuando el ratón pasa por encima del enlace, el texto se vuelve rosa */
 }
 
 /* DISEÑO DE LOS HEROS */
 .hero {
     background: var(--rosa);
-    /* Fondo rosa para la sección Hero */
     width: 100%;
-    /* Ocupa todo el ancho */
     padding: var(--espacio-seccion) var(--margen-lateral);
-    /* Padding vertical (arriba/abajo) y horizontal usando las variables otra vez */
     display: flex;
-    /* Activa Flexbox para centrar su contenido */
     flex-direction: column;
-    /* Coloca a los hijos en una columna (uno debajo del otro) */
     justify-content: center;
-    /* Esto lo centra verticalmente dentro del hero */
     margin-top: calc(-1 * var(--header-height, 3.75rem));
-    /* Buscado: Margen superior negativo usando la variable */
 }
-
 
 .hero-content {
     max-width: var(--max-width-hero, 75rem);
-    /* Ancho máximo del contenido usando variable */
     margin: 0;
-    /* Quita márgenes */
-    /*  No necesita más estilos, ya que hereda el padding lateral del .hero */
 }
 
 .hero h2 {
     font-size: 5rem;
-    /* Tamaño de fuente muy grande */
     line-height: 1.1;
-    /* Buscado: Ajuste del interlineado. */
 }
 
 .hero h2::after {
     content: "";
     display: block;
-    /* Lo hace un bloque, ocupando su propia línea */
     width: 6em;
-    /* Ancho de la línea */
     height: 0.05em;
-    /* Grosor de la línea */
     background: var(--negro);
-    /* Color negro de la variante root */
     margin-top: 0.5em;
-    /* El espacio entre el título y la línea */
 }
 
 .hero p {
     margin-top: 1.5rem;
-    /* Margen superior para separarlo del título */
     font-size: 1.2rem;
-    /* Tamaño de fuente */
     max-width: var(--max-width-texto, 56.25rem);
-    /* Limita el ancho del párrafo para que no sea demasiado largo */
 }
 
 .hero-links {
     margin-top: 2rem;
-    /* Margen superior de los links*/
     font-size: 1.2rem;
-    /* Tamaño de fuente. */
 }
 
 .hero-links a {
     color: var(--negro);
-    /* Color del enlace desactivado */
     text-decoration: underline;
-    /* Aqui si un subrayado. */
     margin-right: 1rem;
-    /* Espacio a la derecha entre enlaces */
 }
 
 .hero-links a:hover {
     color: var(--gris);
-    /* Al pasar el ratón, se vuelve gris */
 }
 
-/* CONTENIDO GENERAL, AJUSTES BASICOS PARA EL DISEÑO */
+/* CONTENIDO GENERAL */
 .work,
 .proyecto-detalle {
     padding: var(--espacio-seccion) var(--margen-lateral);
-    /* Padding estándar de sección */
     background: var(--gris);
-
 }
 
 .bg-white {
     background: white;
-    /* Clase auxiliar reusable para fondos blancos */
 }
 
 .work-title,
 .proyecto-titulo {
     font-size: 4rem;
-    /* Tamaño de fuente grande */
     margin-bottom: 1rem;
-    /* Margen inferior */
     line-height: 1.1;
-    /* Interlineado ajustado */
 }
 
 .work-subtitle,
 .proyecto-texto {
     margin-bottom: 3rem;
-    /* Margen inferior. */
     font-size: 1.1rem;
-    /* Tamaño de fuente. */
     max-width: var(--max-width-tarjeta, 43.75rem);
-    /* Limita el ancho. */
 }
 
-/* LAS GRID PARA PAG.PRINCIPAL Y DISEÑO */
+/* ── BOTONES DE FILTRO ──────────────────────── */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.filtro-btn {
+    background: white;
+    border: 1px solid #ccc;
+    color: var(--negro);
+    font-family: monospace;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filtro-btn:hover {
+    background: var(--rosa);
+    border-color: var(--rosa);
+}
+
+/* Estado activo: el botón seleccionado */
+.filtro-btn.activo {
+    background: var(--negro);
+    border-color: var(--negro);
+    color: white;
+}
+
+/* ── CLASE OCULTO ───────────────────────────── */
+.work-card.oculto {
+    display: none;
+}
+
+/* LAS GRID */
 .work-grid {
     display: grid;
-    /* Buscado: Activa CSS Grid */
     grid-template-columns: repeat(3, 1fr);
-    /* Buscado: Define 3 columnas, cada una con un ancho fraccional igual (1fr). Ocupan todo el espacio disponible por igual. */
     gap: 2rem;
-    /* Buscado: Espacio entre las filas y columnas de la grid. */
 }
 
+/* TARJETA DE PROYECTO (con etiqueta + título + descripción) */
 .work-card {
     background: white;
-    /* Fondo blanco */
-    padding: 3rem 2rem;
-    /* Padding interno */
+    padding: 2rem;
     border: 1px solid #ddd;
-    /* Borde gris claro. */
     text-decoration: none;
-    /* Quita subrayado del enlace. */
     color: black;
-    /* Color del texto. */
     transition: 0.3s;
-    /* Suaviza cambios, como el hover */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .work-card:hover {
     background: var(--rosa);
-    /* Al pasar el ratón, fondo rosa. */
     transform: translateY(-0.3125rem);
-    /*Buscado: Se desplaza ligeramente hacia arriba, dando un efecto de elevación. */
+}
+
+/* Etiqueta de categoría dentro de la tarjeta */
+.work-card-cat {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+    font-family: monospace;
+}
+
+.work-card h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.work-card p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 0.25rem;
+}
+
+.work-card:hover .work-card-cat,
+.work-card:hover p {
+    color: var(--negro);
 }
 
 /* DISEÑO TARJETAS INFORMATIVAS */
@@ -277,20 +256,15 @@ video {
 .card-about {
     background: white;
     padding: 2.5rem;
-    /* igual para todas las tarjetas */
     max-width: var(--max-width-tarjeta, 43.75rem);
-    /* anchura compartida */
     width: 100%;
     margin: 2.5rem auto;
-    /* Centra horizontalmente (auto en izquierda/derecha) y añade margen vertical */
     border: 1px solid #ddd;
     text-decoration: none;
     color: black;
     transition: 0.3s;
     border-radius: 0;
-    /* Fuerza a que no tenga bordes redondeados, que algunas aparecian redondas */
     box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.15);
-    /* Sombra más pronunciada que la del header */
 }
 
 .contact-card h2,
@@ -299,7 +273,6 @@ video {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     text-align: center;
-    /* Centra el texto. */
 }
 
 .contact-card h3,
@@ -308,7 +281,6 @@ video {
     font-size: 1.8rem;
     margin: 1.5rem 0 0.5rem;
     color: #e91e63;
-    /* Color rosa específico */
 }
 
 .contact-card p,
@@ -316,14 +288,12 @@ video {
 .card-about p {
     font-size: 1.2rem;
     line-height: 1.8;
-    /* Interlineado más amplio para mejorar la legibilidad. */
 }
 
 .contact-card a,
 .card a,
 .card-about a {
     color: #e91e63;
-    /* Color rosa */
     text-decoration: none;
     font-weight: bold;
 }
@@ -332,50 +302,33 @@ video {
 .card a:hover,
 .card-about a:hover {
     text-decoration: underline;
-    /* Subrayado al pasar el ratón */
 }
 
 /*DISEÑO DE LOS CARRUSELES*/
 .carrusel {
     display: flex;
-    /* Coloca las imágenes en fila. */
     overflow-x: auto;
-    /*Buscado:  Permite el desplazamiento horizontal si el contenido es más ancho que el contenedor */
     gap: 1.5rem;
-    /* Espacio entre imágenes */
     padding-bottom: 2rem;
-    /* Espacio inferior. */
     margin-bottom: 3rem;
-    /* Margen inferior respecto a lo que sigue. */
-    /* Hacer que ocupe todo el ancho de la ventana */
     width: calc(100% + (var(--margen-lateral) * 2));
-    /* Buscado: Calcula el ancho: 100% del contenedor + el doble del margen lateral para que sobresalga y rompa el contenedor */
     margin-left: calc(var(--margen-lateral) * -1);
-    /* Buscado: Desplaza el carrusel hacia la izquierda un valor igual al margen lateral negativo, para que empiece desde el borde izquierdo de la ventana */
     scroll-snap-type: x mandatory;
-    /* Buscado: Activa el "scroll snap" en el eje horizontal. Al hacer scroll, los elementos se ajustarán a una posición definida. */
 }
 
 .carrusel img {
     height: 50vh;
-    /* Altura fija para todas las imágenes del carrusel */
     width: auto;
-    /* El ancho se ajusta automáticamente para mantener la proporción */
     object-fit: cover;
-    /* Buscado: La imagen cubre el área asignada. Si la proporción no coincide, se recortará para llenar el espacio. */
     border-radius: 0.25rem;
-    /* Pequeño borde redondeado. */
     scroll-snap-align: start;
-    /*Buscado: Al hacer scroll, la imagen se alineará al borde izquierdo del contenedor del carrusel. */
 }
 
-/* AJUSTE DE DISEÑO DE CARRUSEL PARA ZONA ESPECIFICA */
 .carrusel-grande {
     display: flex;
     overflow-x: auto;
     gap: 1.5rem;
     padding-bottom: 2rem;
-    /* Misma técnica que .carrusel para ocupar todo el ancho de la ventana */
     width: calc(100% + (var(--margen-lateral) * 2));
     margin-left: calc(var(--margen-lateral) * -1);
     scroll-snap-type: x mandatory;
@@ -383,17 +336,12 @@ video {
 
 .carrusel-grande img {
     height: 70vh;
-    /* Altura mayor que el carrusel normal */
     width: auto;
     object-fit: contain;
-    /* La imagen se escala para ser lo más grande posible sin recortarse ni deformarse. Puede que haya bandas negras si la proporción no coincide. */
     border-radius: 0.5rem;
-    /* Bordes redondeados. */
     scroll-snap-align: start;
 }
 
-/* IMAGENES EN TARJETAS */
-/* Este selector es específico para imágenes dentro de un carrusel que a su vez está dentro de una tarjeta. */
 .card .carrusel img {
     width: 25%;
     height: auto;
@@ -402,119 +350,102 @@ video {
 /* MI TIPOGRAFIA */
 h5 {
     font-family: 'NyxGothic';
-    /* Aplica la tipografía personalizada que se ha puesto al principio a todos los títulos h5. */
     font-size: 4rem;
 }
 
 .especimen-doble {
     display: flex;
-    /* Coloca los hijos en fila. */
     gap: 1.25rem;
-    /* Espacio de 20px entre ellos. */
     flex-wrap: wrap;
-    /* Buscado: Si no caben en la misma línea, se apilan hacia abajo. */
     margin-top: 2rem;
 }
 
 /* DISEÑO DEL FOOTER */
 .footer {
     background: black;
-    /* Fondo negro. */
     color: white;
-    /* Texto blanco. */
     text-align: center;
-    /* Texto centrado. */
     padding: 4rem var(--margen-lateral);
-    /* Padding usando las variables. */
 }
 
 .footer a {
     color: var(--rosa);
-    /* Enlaces en rosa. */
 }
 
 .footer a:hover {
     text-decoration: underline;
-    /* Subrayado al pasar el ratón. */
 }
 
 /*  RESPONSIVEEE */
 @media (max-width: 768px) {
     :root {
         --margen-lateral: 1.25rem;
-        /* Cambia el margen lateral a un valor fijo en píxeles */
     }
 
     .header {
         position: static;
-        /* Buscado: El header ya no es fijo, sigue el flujo normal del documento */
         height: auto;
-        /* Su altura se ajusta al contenido */
         padding: 0.75rem var(--margen-lateral);
         align-items: flex-start;
-        /* Buscado: Alinea los hijos a la parte superior del header */
         gap: 0.5rem;
     }
 
     html,
     body {
         padding-top: 0;
-        /* Elimina el padding superior porque el header ya no es fijo */
     }
 
     .nav ul {
         display: flex;
         flex-wrap: wrap;
-        /* Buscado: Permite que los enlaces se apilen en varias líneas si no caben */
         gap: 1rem;
         justify-content: center;
-        /* Centra los enlaces */
         width: 100%;
     }
 
     .logo {
         font-size: 1.25rem;
-        /* Reduce tamaño del supuesto logo*/
     }
 
     .hero h2,
     .work-title,
     .proyecto-titulo {
         font-size: 2.5rem;
-        /* Reduce aún más el tamaño de los títulos */
     }
 
     .work-grid {
         grid-template-columns: 1fr;
-        /* Buscado: La grid pasa a tener una sola columna  */
     }
 
     .carrusel img {
         max-height: 40vh;
-        /* Reduce altura máxima de las imágenes del carrusel */
     }
 
     .hero {
         padding: 3rem var(--margen-lateral);
         margin-top: 0;
-        /* Elimina el margen negativo, ya no es necesario sin header fijo  */
     }
 
     .footer {
         padding: 2.5rem var(--margen-lateral);
     }
-}
 
+    .filtros {
+        gap: 0.5rem;
+    }
+
+    .filtro-btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.9rem;
+    }
+}
 
 /* AJUSTE DEL VIDEITOOO */
 .video-container {
     margin-top: 2rem;
-    /* Margen superior */
 }
 
 .video-container video {
     max-width: 37.5rem;
-    /* El video no superará los 37.5rem de ancho */
     width: 100%;
-    /* Pero si el contenedor es más pequeño que 600px, el video ocupará el 100% de ese ancho (se adapta) */
 }
